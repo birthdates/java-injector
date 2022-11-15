@@ -73,7 +73,6 @@ DWORD WINAPI THREAD(LPVOID _) {
         env->ExceptionClear();
 
         // Define Run class with fetched binary
-        printf("data: %s", buffer.data());
         jclass clazz = env->DefineClass("Run", system_loader, reinterpret_cast<jbyte*>(buffer.data()), len);
 
         // Run static Java method from Run class Run#run(String path)
