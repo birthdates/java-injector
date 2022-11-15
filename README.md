@@ -2,6 +2,7 @@
 Inject any JAR file into a running JVM.
 
 # How to Use
+**NOTE: This program will most likely trigger your anti-virus**
 1. Download the latest [release](https://github.com/birthdates/java-injector/releases/) or build it yourself (if you build it yourself, create a libs folder and move `runner/Run.java` into it)
 2. Move all files into one folder
 3. Compile your JAR and move it into the same folder but rename it to `run.jar`
