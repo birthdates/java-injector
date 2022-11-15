@@ -12,6 +12,31 @@ Inject any JAR file into a running JVM.
 # How to Debug
 You will need to build the program yourself. Head into `shared.h` and uncomment the line that looks like `#define VERBOSE`. After this, rebuild the project.
 
+# Creating JAR
+When creating the JAR, include a resource `run.txt` with one line: the location of your main class.
+
+Example:
+```
+com.example.ExampleRun
+```
+
+This class must have a empty void function `main` (this is the function that will first be called)
+
+Example:
+```java
+package com.example;
+
+public class ExampleRun {
+    public static void main() {
+        System.out.println("Example injected.");
+    }
+
+}
+```
+
+**NOTE:**
+The example JAR provided in the [releases](https://github.com/birthdates/java-injector/releases/) will just close the application it injects into.
+
 # Common Problems
 1. `My Java code does not execute!` - There is likely an error within your code, run the program in verbose mode.
 2. `Nothing injects (not even console)` - There is likely another `javaw.exe` running.
