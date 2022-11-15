@@ -1,6 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 // Uncomment to get console with data from DLL
-#define VERBOSE
+//#define VERBOSE
 #include <string>
 
 /**

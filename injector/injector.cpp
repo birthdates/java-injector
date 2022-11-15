@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 #include <windows.h>
 #include <tlhelp32.h>
 #include "../shared.h"
@@ -17,6 +16,7 @@ bool inject(DWORD pid, const char* dll_path)
     HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, false, pid);
     if (handle)
     {
+        // Allocate memory for LoadLibraryA(lp_dll_path), then create a thread on the target process that executes the code at location we allocated.
         LPVOID lp_dll_path = VirtualAllocEx(handle, 0, strlen(dll_path) + 1, MEM_COMMIT, PAGE_READWRITE);
         SIZE_T size = strlen(dll_path) + 1;
         WriteProcessMemory(handle, lp_dll_path, (LPVOID)dll_path, size, 0);

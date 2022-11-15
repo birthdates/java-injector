@@ -51,7 +51,7 @@ DWORD WINAPI THREAD(LPVOID _) {
         auto system_loader =
             env->CallStaticObjectMethod(class_loader, get_system_loader);
 
-        // Fetch the binary of the Run Java class
+        // Fetch the binary of the Run Java class (from lib/Run.class)
         std::string class_path;
         std::string dir = get_dir(get_dll_path());
         (class_path += dir) += "\\lib\\Run.class";
@@ -79,7 +79,6 @@ DWORD WINAPI THREAD(LPVOID _) {
         // Run static Java method from Run class Run#run(String path)
         auto run_method = env->GetStaticMethodID(clazz, "run", "(Ljava/lang/String;)V");
         env->CallStaticVoidMethod(clazz, run_method, env->NewStringUTF(dir.c_str()));
-        printf("%d\n", run_method);
 #ifdef VERBOSE
         if (env->ExceptionCheck())
         {
